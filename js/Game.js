@@ -11,6 +11,9 @@ class Game {
     this.activePhrase = null;
   }
 
+  /**
+   * Function to start game - selects new phrase and adds to display
+   */
   startGame(){
     this.resetTheGame();
     document.getElementById('overlay').style.display = 'none';
@@ -18,17 +21,26 @@ class Game {
     this.activePhrase.addPhraseToDisplay();
   }
 
+  /**
+   * Function to reset the game - reloads window
+   */
   resetTheGame() {
     document.getElementById('btn__reset').addEventListener('click', () => {
       window.location.reload();
     });
   }
 
+  /**
+   * Function to acquire random phrase
+   */
   getRandomPhrase(){
     let phrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
     return phrase;
   }
 
+  /**
+   * Function to handle interaction of button clicks
+   */
   handleInteraction(button){
     let letter = button.textContent;
     if (this.activePhrase.checkLetter(letter)) {
@@ -43,6 +55,9 @@ class Game {
     }
   }
 
+  /**
+   * Oops, removes a life!  Don't lose too many or the game's over!
+   */
   removeLife(){
     let health = document.getElementsByTagName('img');
     this.missed++;
@@ -52,8 +67,10 @@ class Game {
     this.gameOver();
   }
 
+  /**
+   * Checks for a win! Did you figure it out?!
+   */
   checkForWin(){
-    console.log("checking game")
     let overlay = document.getElementById('overlay');
     let show = document.getElementsByClassName('show');
     let letter = document.getElementsByClassName('letter');

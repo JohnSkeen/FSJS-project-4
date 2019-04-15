@@ -3,6 +3,10 @@ class Phrase {
     this.phrase = phrase.toLowerCase();
   }
 
+  /**
+   * Function to take random phrase and print it to the screen
+   * with appropriate classes.
+   */
   addPhraseToDisplay(){
 		this.phrase.split('').forEach(phraseLetter => {
 			const li = document.createElement('li');
@@ -16,6 +20,9 @@ class Phrase {
 		})
   }
 
+  /**
+   * Checking if a letter is in the phrase
+   */
   checkLetter(target){
     if (this.phrase.includes(target)) {
       return true;
@@ -24,6 +31,9 @@ class Phrase {
     }
   }
 
+  /**
+   * Shows matched letter
+   */
   showMatchedLetter(target){
     let letterFound = null;
     let letter = document.getElementsByClassName('letter');
